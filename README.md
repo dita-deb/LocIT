@@ -1,2 +1,2 @@
 # LocIT
-Senior Design Project
+Senior Design Project 2024
