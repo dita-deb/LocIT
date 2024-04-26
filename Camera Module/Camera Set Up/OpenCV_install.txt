@@ -1,3 +1,7 @@
+Alright, so I'm struggling with the actual downloading of the OpenCV and importing cv2. I'm going to have to look into why the Raspberry Pi doesn't recognize the picam mod3 wide as an actual camera.
+
+Additionally, I need to find a way to connect the servo motor to the two different picams running on individual Pi's. 
+
 # | Terminal Command | Length of time to run
 1	| sudo apt install cmake build-essential pkg-config git	a | few seconds
 2	| sudo apt install libjpeg-dev libtiff-dev libjasper-dev libpng-dev libwebp-dev libopenexr-dev	| a few seconds
