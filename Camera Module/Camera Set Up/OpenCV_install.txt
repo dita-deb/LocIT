@@ -10,3 +10,8 @@ Additionally, I need to find a way to connect the servo motor to the two differe
 5	| sudo apt install libatlas-base-dev liblapacke-dev gfortran	| 1 minute
 6	| sudo apt install libhdf5-dev libhdf5-103	| 1 minute
 7	| sudo apt install python3-dev python3-pip python3-numpy	| a few seconds
+
+
+Installing Python 3.7
+And all its packages to read the pic camera library for cv2
+This process takes about 2 hours total 
