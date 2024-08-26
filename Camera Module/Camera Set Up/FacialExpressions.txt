@@ -1,0 +1,4 @@
+8/25/2024
+Anindita
+  I've uploaded the files associated with facial expression recognition which will be used to determine the type of interaction the user experiences without the cues of audio (infringing on privacy). 
+  Alterations may be made in the coming weeks depending on what types of expressions we want to add or remove. 
