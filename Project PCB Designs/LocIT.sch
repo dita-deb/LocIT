@@ -693,12 +693,6 @@
 <wire x1="-1.27" y1="-1.27" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
 </symbol>
-<symbol name="3.3V">
-<wire x1="-1.27" y1="-1.27" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
-<text x="-1.524" y="1.016" size="1.27" layer="96">&gt;VALUE</text>
-<pin name="3.3V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
 <symbol name="PINHD9">
 <wire x1="-6.35" y1="-12.7" x2="1.27" y2="-12.7" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="-12.7" x2="1.27" y2="12.7" width="0.4064" layer="94"/>
@@ -982,19 +976,6 @@
 <description>&lt;b&gt;VLIPO&lt;/b&gt;</description>
 <gates>
 <gate name="G$1" symbol="VLIPO" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="3.3V">
-<description>&lt;b&gt;3.3V Supply&lt;/b&gt;</description>
-<gates>
-<gate name="G$1" symbol="3.3V" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -1412,10 +1393,8 @@ Updated by Yingchun,Shan 2019-10-21
 <part name="U$15" library="microbuilder" deviceset="VBUS" device=""/>
 <part name="U$16" library="microbuilder" deviceset="VLIPO" device=""/>
 <part name="U$5" library="microbuilder" deviceset="GND" device=""/>
-<part name="U$6" library="microbuilder" deviceset="3.3V" device=""/>
 <part name="JP3" library="microbuilder" deviceset="HEADER-1X6" device="70MIL"/>
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
-<part name="U$8" library="microbuilder" deviceset="3.3V" device=""/>
 <part name="JP5" library="microbuilder" deviceset="HEADER-1X9" device="70MIL"/>
 <part name="J1" library="PRT-14017" deviceset="PRT-14017" device=""/>
 </parts>
@@ -1457,18 +1436,12 @@ Updated by Yingchun,Shan 2019-10-21
 <instance part="U$5" gate="G$1" x="205.74" y="205.74" smashed="yes">
 <attribute name="VALUE" x="204.216" y="203.2" size="1.27" layer="96"/>
 </instance>
-<instance part="U$6" gate="G$1" x="180.34" y="220.98" smashed="yes">
-<attribute name="VALUE" x="178.816" y="221.996" size="1.27" layer="96"/>
-</instance>
 <instance part="JP3" gate="A" x="198.12" y="205.74" smashed="yes">
 <attribute name="NAME" x="191.77" y="216.535" size="1.778" layer="95"/>
 <attribute name="VALUE" x="191.77" y="195.58" size="1.778" layer="96"/>
 </instance>
 <instance part="U$7" gate="G$1" x="304.8" y="198.12" smashed="yes">
 <attribute name="VALUE" x="303.276" y="195.58" size="1.27" layer="96"/>
-</instance>
-<instance part="U$8" gate="G$1" x="279.4" y="213.36" smashed="yes">
-<attribute name="VALUE" x="277.876" y="214.376" size="1.27" layer="96"/>
 </instance>
 <instance part="JP5" gate="A" x="297.18" y="195.58" smashed="yes">
 <attribute name="NAME" x="290.83" y="208.915" size="1.778" layer="95"/>
@@ -1643,7 +1616,6 @@ Updated by Yingchun,Shan 2019-10-21
 <segment>
 <wire x1="195.58" y1="210.82" x2="180.34" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="180.34" y1="210.82" x2="180.34" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="U$6" gate="G$1" pin="3.3V"/>
 <pinref part="JP3" gate="A" pin="2"/>
 </segment>
 </net>
@@ -1671,7 +1643,6 @@ Updated by Yingchun,Shan 2019-10-21
 <segment>
 <wire x1="294.64" y1="203.2" x2="279.4" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="279.4" y1="203.2" x2="279.4" y2="210.82" width="0.1524" layer="91"/>
-<pinref part="U$8" gate="G$1" pin="3.3V"/>
 <pinref part="JP5" gate="A" pin="2"/>
 </segment>
 </net>
