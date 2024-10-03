@@ -8,5 +8,8 @@
 - 3D print Holder
 
 ### Proposal Folder
+- Contains initial plans for the Senior Project Proposal
+- Contains a work in progress facial expressions recognition files
 
-### 
+### Facial Recognition for PC
+- This contains the python code to run this model on Visual Studio Code
