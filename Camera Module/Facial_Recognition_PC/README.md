@@ -4,7 +4,8 @@
 ### Overview:
 This folder contains the code used for facial recognition tasks, specifically capturing, training, and recognizing faces.
 
-### File Descriptions:
+### Week 6 Code:
+#### File Descriptions:
 Face_taker.py: Captures images of the target individual and stores them in the dataset for later use in training the model.
 
 Face_train.py: Trains the facial recognition model using the images captured in Face_taker.py, allowing the system to recognize the individual’s face.
