@@ -15,7 +15,12 @@ topic = "sensor"  # Topic to publish GPS data
 # Init AWSIoTMQTTClient
 myAWSIoTMQTTClient = AWSIoTMQTTClient(clientId)
 myAWSIoTMQTTClient.configureEndpoint(host, 8883)
-myAWSIoTMQTTClient.configureCredentials("{}RootCA1.pem".format(certPath), "{}LocIT_RaspberryPi_Zero2W.private.pem.key".format>
+myAWSIoTMQTTClient.configureCredentials(
+    "{}RootCA1.pem".format(certPath),
+    "{}LocIT_RaspberryPi_Zero2W.private.pem.key".format(certPath),
+    "{}LocIT_RaspberryPi_Zero2W-cert.pem.crt".format(certPath)
+)
+
 
 # AWSIoTMQTTClient connection configuration
 myAWSIoTMQTTClient.configureAutoReconnectBackoffTime(1, 32, 20)
