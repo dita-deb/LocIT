@@ -1369,6 +1369,40 @@ Updated by Yingchun,Shan 2019-10-21
 </deviceset>
 </devicesets>
 </library>
+<library name="supply1" urn="urn:adsk.eagle:library:371">
+<description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
+ GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
+ Please keep in mind, that these devices are necessary for the
+ automatic wiring of the supply signals.&lt;p&gt;
+ The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
+ In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+</packages>
+<symbols>
+<symbol name="VCC" urn="urn:adsk.eagle:symbol:26928/1" library_version="1">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="VCC" urn="urn:adsk.eagle:component:26957/1" prefix="P+" library_version="1">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="VCC" symbol="VCC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1392,11 +1426,14 @@ Updated by Yingchun,Shan 2019-10-21
 <part name="JP4" library="microbuilder" deviceset="HEADER-1X8" device="ROUND"/>
 <part name="U$15" library="microbuilder" deviceset="VBUS" device=""/>
 <part name="U$16" library="microbuilder" deviceset="VLIPO" device=""/>
-<part name="U$5" library="microbuilder" deviceset="GND" device=""/>
-<part name="JP3" library="microbuilder" deviceset="HEADER-1X6" device="70MIL"/>
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
 <part name="JP5" library="microbuilder" deviceset="HEADER-1X9" device="70MIL"/>
 <part name="J1" library="PRT-14017" deviceset="PRT-14017" device=""/>
+<part name="U$4" library="microbuilder" deviceset="GND" device=""/>
+<part name="JP6" library="microbuilder" deviceset="HEADER-1X6" device="70MIL"/>
+<part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="JP7" library="microbuilder" deviceset="HEADER-1X6" device="70MIL"/>
+<part name="U$6" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1433,13 +1470,6 @@ Updated by Yingchun,Shan 2019-10-21
 <instance part="U$16" gate="G$1" x="279.4" y="170.18" smashed="yes">
 <attribute name="VALUE" x="277.876" y="171.196" size="1.27" layer="96"/>
 </instance>
-<instance part="U$5" gate="G$1" x="205.74" y="205.74" smashed="yes">
-<attribute name="VALUE" x="204.216" y="203.2" size="1.27" layer="96"/>
-</instance>
-<instance part="JP3" gate="A" x="198.12" y="205.74" smashed="yes">
-<attribute name="NAME" x="191.77" y="216.535" size="1.778" layer="95"/>
-<attribute name="VALUE" x="191.77" y="195.58" size="1.778" layer="96"/>
-</instance>
 <instance part="U$7" gate="G$1" x="304.8" y="198.12" smashed="yes">
 <attribute name="VALUE" x="303.276" y="195.58" size="1.27" layer="96"/>
 </instance>
@@ -1451,6 +1481,23 @@ Updated by Yingchun,Shan 2019-10-21
 <attribute name="NAME" x="224.598" y="208.08" size="1.016" layer="95" rot="R270" align="bottom-right"/>
 <attribute name="VALUE" x="221.94" y="208.03" size="1.016" layer="96" rot="R270" align="bottom-right"/>
 </instance>
+<instance part="U$4" gate="G$1" x="213.36" y="220.98" smashed="yes">
+<attribute name="VALUE" x="211.836" y="218.44" size="1.27" layer="96"/>
+</instance>
+<instance part="JP6" gate="A" x="205.74" y="220.98" smashed="yes">
+<attribute name="NAME" x="199.39" y="231.775" size="1.778" layer="95"/>
+<attribute name="VALUE" x="199.39" y="210.82" size="1.778" layer="96"/>
+</instance>
+<instance part="P+1" gate="VCC" x="195.58" y="236.22" smashed="yes">
+<attribute name="VALUE" x="193.04" y="233.68" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="JP7" gate="A" x="231.14" y="220.98" smashed="yes">
+<attribute name="NAME" x="224.79" y="231.775" size="1.778" layer="95"/>
+<attribute name="VALUE" x="224.79" y="210.82" size="1.778" layer="96"/>
+</instance>
+<instance part="U$6" gate="G$1" x="251.46" y="231.14" smashed="yes" rot="R180">
+<attribute name="VALUE" x="252.984" y="233.68" size="1.27" layer="96" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -1461,6 +1508,19 @@ Updated by Yingchun,Shan 2019-10-21
 <wire x1="254" y1="167.64" x2="264.16" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="GND"/>
 <wire x1="264.16" y1="167.64" x2="264.16" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="J1" gate="G$1" pin="40"/>
+<wire x1="228.6" y1="157.48" x2="236.22" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="157.48" x2="236.22" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="180.34" x2="264.16" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="180.34" x2="264.16" y2="167.64" width="0.1524" layer="91"/>
+<junction x="264.16" y="167.64"/>
+<pinref part="JP7" gate="A" pin="6"/>
+<wire x1="228.6" y1="215.9" x2="251.46" y2="215.9" width="0.1524" layer="91"/>
+<label x="236.22" y="215.9" size="1.778" layer="95"/>
+<wire x1="251.46" y1="215.9" x2="251.46" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="185.42" x2="236.22" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="236.22" y1="185.42" x2="236.22" y2="180.34" width="0.1524" layer="91"/>
+<junction x="236.22" y="180.34"/>
 </segment>
 <segment>
 <pinref part="U$11" gate="G$1" pin="GND"/>
@@ -1473,18 +1533,27 @@ Updated by Yingchun,Shan 2019-10-21
 <junction x="299.72" y="162.56"/>
 </segment>
 <segment>
-<pinref part="U$5" gate="G$1" pin="GND"/>
-<wire x1="195.58" y1="208.28" x2="205.74" y2="208.28" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="3"/>
-</segment>
-<segment>
 <pinref part="U$7" gate="G$1" pin="GND"/>
 <wire x1="294.64" y1="200.66" x2="304.8" y2="200.66" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="3"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="GND"/>
+<wire x1="203.2" y1="223.52" x2="213.36" y2="223.52" width="0.1524" layer="91"/>
+<pinref part="JP6" gate="A" pin="3"/>
+</segment>
+<segment>
+<pinref part="JP7" gate="A" pin="1"/>
+<wire x1="228.6" y1="228.6" x2="251.46" y2="228.6" width="0.1524" layer="91"/>
+<pinref part="U$6" gate="G$1" pin="GND"/>
+</segment>
 </net>
 <net name="SCL" class="0">
 <segment>
+<wire x1="203.2" y1="220.98" x2="180.34" y2="220.98" width="0.1524" layer="91"/>
+<label x="190.5" y="220.98" size="1.778" layer="95"/>
+<pinref part="JP6" gate="A" pin="4"/>
+<wire x1="180.34" y1="220.98" x2="180.34" y2="190.5" width="0.1524" layer="91"/>
 <label x="281.94" y="198.12" size="1.778" layer="95"/>
 <pinref part="JP5" gate="A" pin="4"/>
 <pinref part="JP2" gate="A" pin="3"/>
@@ -1493,23 +1562,22 @@ Updated by Yingchun,Shan 2019-10-21
 <wire x1="241.3" y1="165.1" x2="241.3" y2="198.12" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="198.12" x2="241.3" y2="231.14" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="231.14" x2="215.9" y2="231.14" width="0.1524" layer="91"/>
-<wire x1="195.58" y1="205.74" x2="177.8" y2="205.74" width="0.1524" layer="91"/>
-<label x="182.88" y="205.74" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="4"/>
 <pinref part="J1" gate="G$1" pin="5"/>
 <wire x1="218.44" y1="200.66" x2="215.9" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="200.66" x2="213.36" y2="200.66" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="200.66" x2="213.36" y2="193.04" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="193.04" x2="177.8" y2="193.04" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="193.04" x2="177.8" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="200.66" x2="213.36" y2="190.5" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="231.14" x2="215.9" y2="200.66" width="0.1524" layer="91"/>
 <junction x="215.9" y="200.66"/>
 <wire x1="294.64" y1="198.12" x2="241.3" y2="198.12" width="0.1524" layer="91"/>
 <junction x="241.3" y="198.12"/>
+<wire x1="180.34" y1="190.5" x2="213.36" y2="190.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SDA" class="0">
 <segment>
+<wire x1="203.2" y1="218.44" x2="182.88" y2="218.44" width="0.1524" layer="91"/>
+<label x="190.5" y="218.44" size="1.778" layer="95"/>
+<pinref part="JP6" gate="A" pin="5"/>
 <label x="281.94" y="195.58" size="1.778" layer="95"/>
 <pinref part="JP5" gate="A" pin="5"/>
 <wire x1="254" y1="162.56" x2="238.76" y2="162.56" width="0.1524" layer="91"/>
@@ -1518,18 +1586,15 @@ Updated by Yingchun,Shan 2019-10-21
 <wire x1="238.76" y1="162.56" x2="238.76" y2="195.58" width="0.1524" layer="91"/>
 <wire x1="238.76" y1="195.58" x2="238.76" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="238.76" y1="210.82" x2="210.82" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="195.58" y1="203.2" x2="180.34" y2="203.2" width="0.1524" layer="91"/>
-<label x="182.88" y="203.2" size="1.778" layer="95"/>
-<pinref part="JP3" gate="A" pin="5"/>
 <pinref part="J1" gate="G$1" pin="3"/>
 <wire x1="218.44" y1="203.2" x2="210.82" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="203.2" x2="210.82" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="210.82" y1="195.58" x2="180.34" y2="195.58" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="195.58" x2="180.34" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="210.82" x2="210.82" y2="203.2" width="0.1524" layer="91"/>
 <junction x="210.82" y="203.2"/>
 <wire x1="294.64" y1="195.58" x2="238.76" y2="195.58" width="0.1524" layer="91"/>
 <junction x="238.76" y="195.58"/>
+<wire x1="182.88" y1="218.44" x2="182.88" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="195.58" x2="210.82" y2="195.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC1" class="2">
@@ -1537,11 +1602,12 @@ Updated by Yingchun,Shan 2019-10-21
 <wire x1="254" y1="170.18" x2="246.38" y2="170.18" width="0.1524" layer="91"/>
 <wire x1="246.38" y1="170.18" x2="246.38" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="A" pin="1"/>
-<pinref part="J1" gate="G$1" pin="1"/>
-<wire x1="218.44" y1="205.74" x2="218.44" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="218.44" y1="215.9" x2="233.68" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="233.68" y1="215.9" x2="233.68" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="175.26" x2="246.38" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="175.26" x2="233.68" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="233.68" y1="152.4" x2="215.9" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="152.4" x2="215.9" y2="190.5" width="0.1524" layer="91"/>
+<pinref part="J1" gate="G$1" pin="13"/>
+<wire x1="215.9" y1="190.5" x2="218.44" y2="190.5" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="INT" class="0">
@@ -1602,41 +1668,17 @@ Updated by Yingchun,Shan 2019-10-21
 <wire x1="297.18" y1="167.64" x2="299.72" y2="170.18" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="VCC_GPS" class="1">
-<segment>
-<wire x1="195.58" y1="213.36" x2="187.96" y2="213.36" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="1"/>
-<pinref part="J1" gate="G$1" pin="2"/>
-<wire x1="228.6" y1="205.74" x2="228.6" y2="220.98" width="0.1524" layer="91"/>
-<wire x1="228.6" y1="220.98" x2="187.96" y2="220.98" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="220.98" x2="187.96" y2="213.36" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="3.3V_GPS" class="2">
-<segment>
-<wire x1="195.58" y1="210.82" x2="180.34" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="180.34" y1="210.82" x2="180.34" y2="218.44" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="2"/>
-</segment>
-</net>
-<net name="!RESET_GPS" class="0">
-<segment>
-<pinref part="JP3" gate="A" pin="6"/>
-<wire x1="195.58" y1="200.66" x2="182.88" y2="200.66" width="0.1524" layer="91"/>
-<label x="182.88" y="200.66" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="VCC_GYRO" class="1">
 <segment>
 <wire x1="294.64" y1="205.74" x2="287.02" y2="205.74" width="0.1524" layer="91"/>
 <pinref part="JP5" gate="A" pin="1"/>
-<pinref part="J1" gate="G$1" pin="17"/>
-<wire x1="218.44" y1="185.42" x2="213.36" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="213.36" y1="185.42" x2="213.36" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="187.96" x2="213.36" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="147.32" x2="271.78" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="147.32" x2="271.78" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="226.06" x2="287.02" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="287.02" y1="226.06" x2="287.02" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="J1" gate="G$1" pin="15"/>
+<wire x1="213.36" y1="187.96" x2="218.44" y2="187.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3.3V_GYRO" class="2">
@@ -1674,9 +1716,68 @@ Updated by Yingchun,Shan 2019-10-21
 <pinref part="JP5" gate="A" pin="7"/>
 </segment>
 </net>
+<net name="VCC" class="1">
+<segment>
+<wire x1="203.2" y1="228.6" x2="195.58" y2="228.6" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="228.6" x2="195.58" y2="233.68" width="0.1524" layer="91"/>
+<pinref part="JP6" gate="A" pin="1"/>
+<pinref part="P+1" gate="VCC" pin="VCC"/>
+</segment>
+</net>
+<net name="1PPS" class="0">
+<segment>
+<pinref part="JP7" gate="A" pin="2"/>
+<wire x1="228.6" y1="226.06" x2="251.46" y2="226.06" width="0.1524" layer="91"/>
+<label x="236.22" y="226.06" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="TXO" class="0">
+<segment>
+<pinref part="JP7" gate="A" pin="5"/>
+<wire x1="251.46" y1="218.44" x2="228.6" y2="218.44" width="0.1524" layer="91"/>
+<label x="236.22" y="218.44" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="RXI" class="0">
+<segment>
+<pinref part="JP7" gate="A" pin="4"/>
+<wire x1="228.6" y1="220.98" x2="251.46" y2="220.98" width="0.1524" layer="91"/>
+<label x="236.22" y="220.98" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="!RESET" class="0">
+<segment>
+<pinref part="JP6" gate="A" pin="6"/>
+<wire x1="203.2" y1="215.9" x2="190.5" y2="215.9" width="0.1524" layer="91"/>
+<label x="190.5" y="215.9" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$1" class="2">
+<segment>
+<wire x1="203.2" y1="226.06" x2="187.96" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="226.06" x2="187.96" y2="238.76" width="0.1524" layer="91"/>
+<pinref part="JP6" gate="A" pin="2"/>
+<wire x1="187.96" y1="238.76" x2="208.28" y2="238.76" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="238.76" x2="208.28" y2="193.04" width="0.1524" layer="91"/>
+<pinref part="J1" gate="G$1" pin="11"/>
+<wire x1="208.28" y1="193.04" x2="218.44" y2="193.04" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
 </schematic>
 </drawing>
+<compatibility>
+<note version="8.2" severity="warning">
+Since Version 8.2, EAGLE supports online libraries. The ids
+of those online libraries will not be understood (or retained)
+with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports URNs for individual library
+assets (packages, symbols, and devices). The URNs of those assets
+will not be understood (or retained) with this version.
+</note>
+</compatibility>
 </eagle>
