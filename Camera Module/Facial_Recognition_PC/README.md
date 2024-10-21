@@ -15,3 +15,7 @@ face_recognizer.py: Runs the trained facial recognition model, identifying indiv
 names.json: Stores a mapping between each individual's name and their corresponding image data in the dataset.
 
 haarcascade_frontalface_default.xml: A pre-trained Haar Cascade classifier that detects facial features (e.g., eyes, nose, mouth) to identify and classify faces for recognition.
+
+### Videos:
+![NotWorking_with_Sister-ezgif com-crop](https://github.com/user-attachments/assets/479a4cb3-6d5d-4170-b0b5-bd5a3a324527)
+
