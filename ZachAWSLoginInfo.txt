@@ -1,0 +1,4 @@
+https://us-east-2.console.aws.amazon.com/iot/home?region=us-east-2#/home
+
+Use sudo root email for login: zponder@students.kennesaw.edu
+Password: LocIT4850
