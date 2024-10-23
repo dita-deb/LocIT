@@ -1,5 +1,6 @@
 import GPSIoT
 import TemperatureAWS
+import BatteryAWS
 # import notificationAWS
 import time
 import json
