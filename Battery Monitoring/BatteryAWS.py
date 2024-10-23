@@ -60,7 +60,7 @@ if __name__ == "__main__":
     clientId = "LocIT_RaspberryPi_Zero2W"
     host = "a25srdspphdz2u-ats.iot.us-east-2.amazonaws.com"
     certPath = "/home/raspberrypi/certs/"
-    topic = "battery/sensor"
+    topic = "battery"
 
     battery_sensor = LC709203FSensor(i2c, clientId, host, certPath, topic)
 
