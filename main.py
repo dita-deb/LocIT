@@ -14,8 +14,9 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
 table_name = 'LocIT'
 table = dynamodb.Table(table_name)
 
-# Global variable for overheat mode
+# Global variables for overheat mode and low battery mode
 overheat_mode = False
+lowbattery_mode = False
 
 def push_to_dynamodb(data):
     """Function to push combined data to DynamoDB."""
@@ -35,15 +36,17 @@ def push_to_dynamodb(data):
 
 def on_alert_message(client, userdata, message):
     """Callback for handling alert messages."""
-    global overheat_mode
+    global overheat_mode, lowbattery_mode
     payload = message.payload.decode('utf-8')
     
     if payload == '1':  # Trigger alert only if payload is "1"
-        if not overheat_mode:
+        if overheat_mode:
+            print("Tracker currently overheated. Unable to send alert.")
+        elif lowbattery_mode:
+            print("Tracker currently in low battery mode. Unable to send alert.")
+        else:
             print("Alert received. Activating alert callback...")
             notificationAWS.alert_callback(client, userdata, message)  # Trigger alert callback
-        else:
-            print("Tracker currently overheated. Unable to send alert.")
 
 def main():
     # AWS IoT Core settings
@@ -73,8 +76,21 @@ def main():
 
     # Subscribe to the "alert" topic to handle alerts
     client.subscribe("alert", 1, on_alert_message)
-
+    
     while True:
+        cnfg="config.txt"
+        try:
+          with open(cnfg, 'r') as file:
+            for line in file:
+                if "GeneralTimer" in line:
+                    gT=line.strip()           
+                    gT=gT.replace('GeneralTimer ', '')
+                    gT=int(gT)
+                if "LowPower" in line:
+                    LP=line.strip()
+                    LP=LP.replace('LowPower ', '')
+        except:
+          print("Can't open")
         try:
             # Get the latest temperature and overheat mode
             temp_data = TemperatureAWS.get_temperature(client)
@@ -90,11 +106,20 @@ def main():
             if not gps_data:
                 print("No GPS data received.")
 
-            # Get the latest battery data
+            # Get the latest battery data and update lowbattery_mode
             battery_data = BatteryAWS.get_battery_power(client)
-            if not battery_data:
+            if battery_data:
+                global lowbattery_mode
+                lowbattery_mode = battery_data.get('low_battery_mode', False)
+                print(f"Updated Low Battery Mode: {'Active' if lowbattery_mode else 'Inactive'}")
+            else:
                 print("No battery data received.")
-
+            
+            if LP=="On":
+              Low_Battery_Mode=True
+            else:
+              Low_Battery_Mode=False
+            
             # Combine GPS, temperature, and battery data into one message if all are available
             if temp_data and gps_data and battery_data:
                 combined_data = {
@@ -120,7 +145,7 @@ def main():
                 push_to_dynamodb(combined_data)
 
             # Sleep for a while before the next loop iteration
-            time.sleep(20)
+            time.sleep(gT)
 
         except Exception as e:
             print(f"Error occurred: {str(e)}")
