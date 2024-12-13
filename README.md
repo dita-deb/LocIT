@@ -22,7 +22,7 @@ LocIT, short for "Location Integrated Tracker," is a wearable safety device desi
 
 ## Software System  
 - Python-based main algorithm managing data collection, device state, and communication.
-- AWS integration for real-time data storage and retrieval.
+- AWS integration for real-time data storage and retrieval. [Backend-Webserver](https://02fydzyygd.execute-api.us-east-2.amazonaws.com/LocITDynamoDBDisplay)
 - Companion app (FlutterFlow) for monitoring and control.
 
 ## Encasing Design  
